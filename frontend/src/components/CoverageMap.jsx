@@ -29,14 +29,14 @@ export default function CoverageMap({ a }) {
         <table className="w-full border-separate border-spacing-1 text-center text-[12px]">
           <thead>
             <tr>
-              <th className="text-left text-[11px] font-semibold text-ink-3">{rowDims.map((d) => cov.dim_labels[dims.indexOf(d)]).join(" · ")}</th>
+              <th className="text-left text-[11px] font-semibold text-ink-2">{rowDims.map((d) => cov.dim_labels[dims.indexOf(d)]).join(" · ")}</th>
               {cols.map((c, i) => <th key={i} className="px-1 text-[11px] font-semibold text-ink-2">{label(c, colDims) || "Result"}</th>)}
             </tr>
           </thead>
           <tbody>
             {rows.map((r, i) => (
               <tr key={i}>
-                <th className="whitespace-nowrap pr-2 text-left text-[12px] font-semibold text-ink-2">{label(r, rowDims)}</th>
+                <th className="whitespace-nowrap pr-2 text-left text-[12px] font-semibold text-ink">{label(r, rowDims)}</th>
                 {cols.map((c, j) => {
                   const cell = find(r, c);
                   if (!cell) return <td key={j} />;
@@ -60,6 +60,16 @@ export default function CoverageMap({ a }) {
           </tbody>
         </table>
       </div>
+
+      <div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-1.5 text-[11px] text-ink-3">
+        <span className="flex items-center gap-1"><span className="h-2.5 w-2.5 rounded-sm bg-ok-soft border border-ok-mid" />positive result</span>
+        <span className="flex items-center gap-1"><span className="h-2.5 w-2.5 rounded-sm bg-fault-soft border border-fault-mid" />negative result</span>
+        <span className="flex items-center gap-1"><span className="h-2.5 w-2.5 rounded-sm bg-sunk border border-line" />inconclusive (too few users)</span>
+        <span className="flex items-center gap-1"><span className="h-2.5 w-2.5 rounded-sm bg-hs-soft border border-hs/40" />planned</span>
+        <span className="flex items-center gap-1"><span className="h-2.5 w-2.5 rounded-sm border border-dashed border-line" />never tested</span>
+        <span className="flex items-center gap-1"><span className="h-2.5 w-2.5 rounded-sm bg-warn-soft border border-warn" />top gap</span>
+      </div>
+
       {top && (
         <div className="mt-3 rounded border border-warn-mid bg-warn-soft px-3 py-2 text-[13px]">
           <p className="font-semibold text-warn">Most informative next experiment: {top.label}</p>

@@ -9,11 +9,37 @@ import json
 import logging
 import re
 
+_META_TAIL = re.compile(r"\s*\|\s*When:.*$", re.IGNORECASE | re.DOTALL)
+
+
+def clean_chat_text(text: str) -> str:
+    """Hindsight sometimes appends extracted metadata ("| When: ... | Involving: ...") to a
+    fact's text. Strip it for display; the dashboard already shows the date separately."""
+    return _META_TAIL.sub("", text or "").strip()
+
 from . import ledger
 from .config import AGENT_DIR, BANK_ID, HINDSIGHT_API_KEY, HINDSIGHT_BASE_URL, SOURCE_TAG
 from .records import narrative, record_id, tags_for, to_memory_item
 
 log = logging.getLogger("retrace.memory")
+
+
+# Documents the self-driving-agents installer ingests from retrace-agent/ (persona, company background,
+# method, playbook). They live in the same bank but are agent knowledge, not team chat.
+AGENT_DOCS = {p.stem for p in AGENT_DIR.glob("*.md")} | {"README"}
+
+
+def is_chat(res, doc: str | None) -> bool:
+    """True for anything RETRACE didn't write itself and that isn't the agent's own seed knowledge.
+
+    Both OpenClaw's automatic transcript retain and the agent's explicit agent_knowledge_ingest tool
+    call write documents with no record_json metadata and an id RETRACE's ledger has never seen, so
+    "not ours, not seed knowledge" is what actually identifies a note captured live from chat.
+    """
+    tags = res.tags or []
+    if SOURCE_TAG in tags:
+        return False
+    return True
 
 
 def chat_note(res) -> dict | None:
@@ -23,7 +49,7 @@ def chat_note(res) -> dict | None:
     when = res.occurred_start or res.mentioned_at
     ts = when.isoformat() if hasattr(when, "isoformat") else (str(when) if when else "2026-09-28T12:00:00+05:30")
     return {"note_id": "CHAT-" + hashlib.sha1(res.text.encode()).hexdigest()[:8], "kind": "note", "source": "chat",
-            "timestamp": ts, "author": "Team chat (OpenClaw)", "feature_area": None, "note": res.text}
+            "timestamp": ts, "author": "Team chat (OpenClaw)", "feature_area": None, "note": clean_chat_text(res.text)}
 
 
 class HindsightMemory:
@@ -65,7 +91,7 @@ class HindsightMemory:
             doc = res.document_id or meta.get("record_id")
             if rec is None and doc:
                 rec = ledger.get(doc)
-            if rec is None and SOURCE_TAG not in (res.tags or []):
+            if rec is None and doc not in AGENT_DOCS and is_chat(res, doc):
                 rec = chat_note(res)
             hits.append({"document_id": doc, "text": res.text, "record": rec})
         return hits

@@ -8,7 +8,7 @@ export default function AskPanel({ company, question, setQuestion, onAsk, busy, 
       <div className="panel-head"><h2 className="h-label">Ask RETRACE</h2></div>
       <div className="scroll-y flex-1 space-y-4 p-3.5">
         <div>
-          <textarea className="field resize-none" rows={3} value={question} onChange={(e) => setQuestion(e.target.value)}
+          <textarea className="field resize-none pr-9" rows={3} value={question} onChange={(e) => setQuestion(e.target.value)}
             onKeyDown={(e) => { if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); submit(); } }}
             placeholder="e.g. Should we bring gamified onboarding back?" aria-label="Your question" />
           <button className={`mt-2 w-full ${memoryOn ? "btn-primary" : "btn bg-fault text-white hover:bg-[#b82a3f]"}`} onClick={() => submit()} disabled={busy || question.trim().length < 3}>
@@ -19,7 +19,9 @@ export default function AskPanel({ company, question, setQuestion, onAsk, busy, 
         <div>
           <h3 className="text-xs font-semibold text-ink-2">Try asking</h3>
           <ul className="mt-1.5 space-y-1">
-            {company?.suggested?.map((s) => (
+            {company?.suggested
+              ?.filter((s) => s.text.trim().toLowerCase() !== question.trim().toLowerCase())
+              .map((s) => (
               <li key={s.text}>
                 <button onClick={() => { setQuestion(s.text); submit(s.text); }} disabled={busy}
                   className="w-full rounded border border-line bg-sunk px-2.5 py-1.5 text-left text-[13px] leading-snug text-ink hover:border-mem hover:bg-mem-soft">

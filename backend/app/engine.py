@@ -365,7 +365,17 @@ def analyze(topic: dict, company: dict, records: list[dict]) -> dict:
     cov = coverage(area, area_cfg["coverage_dims"], {k: company["dim_levels"][k] for k in area_cfg["coverage_dims"]}, exps, events, decisions, focus)
     planned = [dec for dec in decisions if dec.get("feature_area") == area]
 
-    area_notes = [n for n in notes if n.get("feature_area") in (area, None)]
+    # Notes captured from OpenClaw chat carry no feature area, so keep only those that mention this topic
+    # (a topic keyword or one of this area's experiment IDs).
+    area_exp_ids = [e["experiment_id"].lower() for e in area_exps]
+
+    def relevant(n):
+        if n.get("feature_area"):
+            return n["feature_area"] == area
+        text = n["note"].lower()
+        return any(k in text for k in kws) or any(i in text for i in area_exp_ids)
+
+    area_notes = [n for n in notes if relevant(n)]
     timeline = {
         "experiments": [{"id": e["experiment_id"], "name": e["name"], "date": e["date_end"], "lift": e["lift"], "direction": direction(e),
                          "quality": q[e["experiment_id"]]["level"], "conditions": e["conditions"], "interpretation": e["team_interpretation"]} for e in area_exps],

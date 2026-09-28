@@ -82,7 +82,12 @@ export default function AnswerPanel({ result, shown, loading }) {
         )}
         {shown.has("COVERAGE") && (
           <Section n="4" title="What remains unknown" tone="text-warn">
-            {s.unknown ? <><p className="font-semibold">{s.unknown.label}</p><p className="text-ink-2">{s.unknown.why}</p></> : <p className="text-ink-3">Every combination has been tested.</p>}
+            {s.unknown ? (
+              <>
+                <p className="font-semibold">{s.unknown.label}</p>
+                <p className="text-ink-2">The most informative untested combination — see the <span className="font-semibold text-mem">Coverage map</span> tab for why.</p>
+              </>
+            ) : <p className="text-ink-3">Every combination has been tested.</p>}
             {s.planned.length > 0 && <p className="mt-1 text-hs">Already planned: {s.planned.map((p) => p.note).join(" ")}</p>}
           </Section>
         )}
