@@ -1,0 +1,55 @@
+[
+  {
+    "state_id": "PS-01",
+    "kind": "product_state",
+    "timestamp": "2023-11-01T09:00:00+05:30",
+    "key": "platforms",
+    "value": [
+      "android"
+    ],
+    "note": "NOVA is Android-only."
+  },
+  {
+    "state_id": "PS-02",
+    "kind": "product_state",
+    "timestamp": "2023-11-01T09:00:00+05:30",
+    "key": "onboarding_steps",
+    "value": 5,
+    "note": "Standard onboarding has 5 steps."
+  },
+  {
+    "state_id": "PS-03",
+    "kind": "product_state",
+    "timestamp": "2024-06-17T09:00:00+05:30",
+    "key": "platforms",
+    "value": [
+      "android",
+      "ios"
+    ],
+    "note": "iOS app launched."
+  },
+  {
+    "state_id": "PS-04",
+    "kind": "product_state",
+    "timestamp": "2025-02-10T09:00:00+05:30",
+    "key": "onboarding_steps",
+    "value": 3,
+    "note": "3-step onboarding became the default on Android and iOS."
+  },
+  {
+    "state_id": "PS-05",
+    "kind": "product_state",
+    "timestamp": "2026-01-12T09:00:00+05:30",
+    "key": "ios_share_new_users",
+    "value": 0.45,
+    "note": "iOS is now 45% of new users."
+  },
+  {
+    "state_id": "PS-06",
+    "kind": "product_state",
+    "timestamp": "2024-08-28T09:00:00+05:30",
+    "key": "plan_price",
+    "value": 299,
+    "note": "Standard plan stays at ₹299; ₹499 Plus tier added."
+  }
+]

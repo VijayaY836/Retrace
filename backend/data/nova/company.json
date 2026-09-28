@@ -1,0 +1,161 @@
+{
+  "name": "NOVA",
+  "tagline": "Skills in 10 minutes a day",
+  "location": "Bengaluru",
+  "users": "2.3M",
+  "bank_id": "retrace-nova",
+  "today": "2026-09-28",
+  "plans": {
+    "299": "Standard (monthly)",
+    "499": "Plus (monthly)",
+    "999": "Annual"
+  },
+  "areas": {
+    "onboarding": {
+      "label": "Onboarding",
+      "metric": "activation_rate",
+      "coverage_dims": [
+        "gamification",
+        "onboarding_steps",
+        "segment",
+        "platform"
+      ]
+    },
+    "notifications": {
+      "label": "Push notifications",
+      "metric": "retention_d30",
+      "coverage_dims": [
+        "notif_per_day",
+        "platform"
+      ]
+    },
+    "ui": {
+      "label": "UI",
+      "metric": "retention_d30",
+      "coverage_dims": [
+        "dark_mode",
+        "platform",
+        "segment"
+      ]
+    },
+    "pricing": {
+      "label": "Pricing",
+      "metric": "paid_conversion",
+      "coverage_dims": [
+        "plan_price"
+      ]
+    },
+    "paywall": {
+      "label": "Paywall",
+      "metric": "paid_conversion",
+      "coverage_dims": [
+        "platform"
+      ]
+    },
+    "referrals": {
+      "label": "Referrals",
+      "metric": "invites_per_user",
+      "coverage_dims": [
+        "gamification"
+      ]
+    }
+  },
+  "dim_levels": {
+    "gamification": [
+      false,
+      true
+    ],
+    "onboarding_steps": [
+      3,
+      7
+    ],
+    "segment": [
+      "new_users",
+      "existing_users"
+    ],
+    "platform": [
+      "android",
+      "ios"
+    ],
+    "notif_per_day": [
+      1,
+      2,
+      5
+    ],
+    "dark_mode": [
+      true
+    ],
+    "plan_price": [
+      299,
+      499,
+      999
+    ]
+  },
+  "topics": [
+    {
+      "id": "gamification",
+      "label": "Gamified onboarding",
+      "area": "onboarding",
+      "factor": "gamification",
+      "keywords": [
+        "gamif",
+        "badge",
+        "xp",
+        "streak badge"
+      ]
+    },
+    {
+      "id": "onboarding",
+      "label": "Onboarding length",
+      "area": "onboarding",
+      "factor": "onboarding_steps",
+      "keywords": [
+        "onboarding",
+        "steps",
+        "short onboarding",
+        "long onboarding"
+      ]
+    },
+    {
+      "id": "notifications",
+      "label": "Push notifications",
+      "area": "notifications",
+      "factor": "notif_per_day",
+      "keywords": [
+        "push",
+        "notification",
+        "reminder"
+      ]
+    },
+    {
+      "id": "dark_mode",
+      "label": "Dark mode",
+      "area": "ui",
+      "factor": "dark_mode",
+      "keywords": [
+        "dark mode",
+        "dark"
+      ]
+    },
+    {
+      "id": "annual_plan",
+      "label": "Annual plan",
+      "area": "pricing",
+      "factor": "plan_price",
+      "keywords": [
+        "annual",
+        "999",
+        "yearly"
+      ]
+    },
+    {
+      "id": "paywall",
+      "label": "Paywall",
+      "area": "paywall",
+      "factor": null,
+      "keywords": [
+        "paywall"
+      ]
+    }
+  ]
+}

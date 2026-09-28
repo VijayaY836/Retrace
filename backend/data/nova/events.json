@@ -1,0 +1,38 @@
+[
+  {
+    "event_id": "EV-01",
+    "kind": "event",
+    "timestamp": "2025-10-20T10:00:00+05:30",
+    "date_start": "2025-10-18",
+    "date_end": "2025-10-26",
+    "event_type": "sale",
+    "note": "Diwali sale: 40% off all plans."
+  },
+  {
+    "event_id": "EV-02",
+    "kind": "event",
+    "timestamp": "2025-10-15T21:00:00+05:30",
+    "date_start": "2025-10-15",
+    "date_end": "2025-10-15",
+    "event_type": "outage",
+    "note": "6-hour Play Store listing outage; new Android installs paused."
+  },
+  {
+    "event_id": "EV-03",
+    "kind": "event",
+    "timestamp": "2025-06-02T10:00:00+05:30",
+    "date_start": "2025-06-02",
+    "date_end": "2025-06-02",
+    "event_type": "team",
+    "note": "Riya Menon (Growth PM) moved to the Payments team; onboarding handed to a new PM."
+  },
+  {
+    "event_id": "EV-04",
+    "kind": "event",
+    "timestamp": "2025-09-16T10:00:00+05:30",
+    "date_start": "2025-09-16",
+    "date_end": "2025-09-16",
+    "event_type": "os_release",
+    "note": "iOS 19 released."
+  }
+]

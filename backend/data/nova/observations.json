@@ -1,0 +1,26 @@
+[
+  {
+    "observation_id": "OBS-01",
+    "kind": "observation",
+    "timestamp": "2025-01-16T12:00:00+05:30",
+    "author": "Pooja Nair (UX Research)",
+    "feature_area": "onboarding",
+    "note": "Interviewed 14 churned new users. 9 said onboarding felt 'too long'; 2 mentioned badges, both positively."
+  },
+  {
+    "observation_id": "OBS-02",
+    "kind": "observation",
+    "timestamp": "2025-06-09T12:00:00+05:30",
+    "author": "Support team",
+    "feature_area": "notifications",
+    "note": "Top uninstall-survey reason in 2024 was 'too many notifications'; complaints dropped after pushes were cut to 1/day on iOS."
+  },
+  {
+    "observation_id": "OBS-03",
+    "kind": "observation",
+    "timestamp": "2025-11-03T12:00:00+05:30",
+    "author": "Data team",
+    "feature_area": "paywall",
+    "note": "EXP-19 conversion fell back to +6% two weeks after the Diwali sale ended."
+  }
+]

@@ -1,0 +1,44 @@
+{
+  "name": "@vectorize-io/self-driving-agents",
+  "version": "0.0.26",
+  "description": "Install self-driving agents with portable memory on any harness",
+  "type": "module",
+  "main": "dist/cli.js",
+  "bin": {
+    "self-driving-agents": "dist/cli.js"
+  },
+  "files": [
+    "dist",
+    "hermes-plugin"
+  ],
+  "scripts": {
+    "build": "tsc && cp -r src/skill dist/",
+    "test": "vitest run src/tests",
+    "lint": "node src/scripts/lint-bank-templates.mjs .",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "ai-agents",
+    "self-driving",
+    "hindsight",
+    "memory",
+    "openclaw",
+    "hermes",
+    "claude-code"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vectorize-io/self-driving-agents.git"
+  },
+  "devDependencies": {
+    "@types/node": "^25.6.0",
+    "typescript": "^5.4",
+    "vitest": "^4.1.2"
+  },
+  "dependencies": {
+    "@clack/prompts": "^1.2.0",
+    "@vectorize-io/hindsight-client": "^0.5.6",
+    "picocolors": "^1.1.0"
+  }
+}

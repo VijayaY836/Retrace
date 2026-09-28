@@ -1,0 +1,77 @@
+[
+  {
+    "belief_id": "BEL-07",
+    "kind": "belief",
+    "timestamp": "2024-03-28T19:00:00+05:30",
+    "source_experiment": "EXP-07",
+    "feature_area": "onboarding",
+    "statement": "Gamification hurts onboarding.",
+    "claim": {
+      "factor": "gamification",
+      "op": "eq",
+      "value": true,
+      "direction": "negative"
+    },
+    "author": "Riya Menon (Growth PM)"
+  },
+  {
+    "belief_id": "BEL-09",
+    "kind": "belief",
+    "timestamp": "2024-07-03T19:00:00+05:30",
+    "source_experiment": "EXP-09",
+    "feature_area": "notifications",
+    "statement": "Push notifications hurt retention.",
+    "claim": {
+      "factor": "notif_per_day",
+      "op": "gt",
+      "value": 0,
+      "direction": "negative"
+    },
+    "author": "Arjun Shetty (Retention PM)"
+  },
+  {
+    "belief_id": "BEL-06",
+    "kind": "belief",
+    "timestamp": "2024-02-28T19:00:00+05:30",
+    "source_experiment": "EXP-06",
+    "feature_area": "ui",
+    "statement": "Dark mode doesn't move retention.",
+    "claim": {
+      "factor": "dark_mode",
+      "op": "eq",
+      "value": true,
+      "direction": "none"
+    },
+    "author": "Neha Kapoor (Design Lead)"
+  },
+  {
+    "belief_id": "BEL-15",
+    "kind": "belief",
+    "timestamp": "2025-01-22T19:00:00+05:30",
+    "source_experiment": "EXP-15",
+    "feature_area": "pricing",
+    "statement": "Annual plans scare users away.",
+    "claim": {
+      "factor": "plan_price",
+      "op": "eq",
+      "value": 999,
+      "direction": "negative"
+    },
+    "author": "Kavya Rao (Monetization PM)"
+  },
+  {
+    "belief_id": "BEL-10",
+    "kind": "belief",
+    "timestamp": "2024-07-24T19:00:00+05:30",
+    "source_experiment": "EXP-10",
+    "feature_area": "onboarding",
+    "statement": "Shorter onboarding helps activation.",
+    "claim": {
+      "factor": "onboarding_steps",
+      "op": "eq",
+      "value": 3,
+      "direction": "positive"
+    },
+    "author": "Riya Menon (Growth PM)"
+  }
+]

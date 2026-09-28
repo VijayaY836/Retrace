@@ -1,0 +1,42 @@
+{
+  "new_result": {
+    "experiment_id": "EXP-24",
+    "kind": "experiment",
+    "name": "Two pushes a day (Android)",
+    "date_start": "2026-08-17",
+    "date_end": "2026-09-14",
+    "timestamp": "2026-09-14T18:00:00+05:30",
+    "owner": "Arjun Shetty (Retention PM)",
+    "hypothesis": "Two well-timed daily reminders increase 30-day retention on Android",
+    "feature_area": "notifications",
+    "conditions": {
+      "segment": "new_users",
+      "platform": "android",
+      "plan_price": 299,
+      "notif_per_day": 2
+    },
+    "primary_metric": "retention_d30",
+    "control_rate": 0.221,
+    "variant_rate": 0.228,
+    "lift": 0.032,
+    "sample_size": 34800,
+    "p_value": 0.04,
+    "team_interpretation": "Two pushes a day look fine on Android.",
+    "decision": "Enabled 2 pushes/day on Android",
+    "notes": ""
+  },
+  "decision": {
+    "decision_id": "DEC-25",
+    "kind": "decision",
+    "timestamp": "2026-09-28T16:00:00+05:30",
+    "feature_area": "onboarding",
+    "planned_experiment": "EXP-25",
+    "cell": {
+      "gamification": true,
+      "onboarding_steps": 3,
+      "segment": "new_users",
+      "platform": "ios"
+    },
+    "note": "Run gamified 3-step onboarding for new iOS users as EXP-25 in October."
+  }
+}

@@ -1,0 +1,9 @@
+backend/.env
+backend/data/ledger.json
+__pycache__/
+*.pyc
+.venv/
+.pytest_cache/
+frontend/node_modules/
+frontend/dist/
+.DS_Store
