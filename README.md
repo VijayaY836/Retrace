@@ -1,7 +1,5 @@
 # RETRACE: the memory of your experiments
 
-**HackwithHyderabad 3.0 · AI Agents That Learn Using Hindsight**
-
 > Companies don't lack data. Their experiments just never add up to knowledge.
 
 RETRACE remembers not just what a product team tested, but **the conditions, what the team concluded, and how later evidence changed that conclusion**. Ask *"Should we bring gamified onboarding back?"* and it answers in four parts: **what we believed**, **what we later saw**, **what we now know**, and **what remains unknown**.
