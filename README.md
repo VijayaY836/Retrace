@@ -19,19 +19,7 @@ It also ignores traps: an underpowered test, a paywall test that ran during the 
 
 ## How it works
 
-```
-                 ┌──────────────────────────────┐
-                 │ HINDSIGHT BANK: retrace-nova  │  ← bank-template.json: missions,
-                 └──────────────┬───────────────┘    directives, mental models
-            ┌───────────────────┴───────────────────┐
-            ▼                                       ▼
-┌────────────────────────┐            ┌─────────────────────────────┐
-│ RETRACE dashboard       │            │ RETRACE chat agent           │
-│ FastAPI + React         │            │ OpenClaw + Hindsight plugin  │
-│ deterministic learning  │            │ auto-capture, auto-recall,   │
-│ engine                  │            │ knowledge tools              │
-└────────────────────────┘            └─────────────────────────────┘
-```
+![RETRACE system architecture](docs/system-architecture.png)
 
 **Pipeline:** `RETAIN → RECALL → COMPARE → REVISE → COVERAGE → ANSWER`, shown live in the memory trace.
 
