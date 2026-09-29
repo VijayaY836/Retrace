@@ -1,25 +1,51 @@
-# RETRACE: the memory of your experiments
+<div align="center">
 
-> Companies don't lack data. Their experiments just never add up to knowledge.
+# RETRACE
 
-RETRACE remembers not just what a product team tested, but **the conditions, what the team concluded, and how later evidence changed that conclusion**. Ask *"Should we bring gamified onboarding back?"* and it answers in four parts: **what we believed**, **what we later saw**, **what we now know**, and **what remains unknown**.
+### The memory of your experiments
+
+*Companies don't lack data. Their experiments just never add up to knowledge.*
+
+![Python](https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=white)
+![FastAPI](https://img.shields.io/badge/FastAPI-009688?logo=fastapi&logoColor=white)
+![React](https://img.shields.io/badge/React-18-61DAFB?logo=react&logoColor=black)
+![Vite](https://img.shields.io/badge/Vite-646CFF?logo=vite&logoColor=white)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-06B6D4?logo=tailwindcss&logoColor=white)
+![Hindsight](https://img.shields.io/badge/Memory-Hindsight-7C3AED)
+![OpenClaw](https://img.shields.io/badge/Agent-OpenClaw-E5484D)
+
+[How it works](#how-it-works) · [Hindsight](#how-retrace-uses-hindsight) · [Run it](#run-it) · [Install the agent](#install-retrace-as-a-self-driving-agent) · [Layout](#layout)
+
+</div>
+
+---
+
+RETRACE remembers not just what a product team tested, but **the conditions, what the team concluded, and how later evidence changed that conclusion**.
+
+Ask *"Should we bring gamified onboarding back?"* and it answers in four parts:
+
+| 🧠 What we believed | 👀 What we later saw | ✅ What we now know | ❓ What remains unknown |
+|:---:|:---:|:---:|:---:|
+| The original conclusion, dated | Evidence that arrived afterwards | The current, re-judged belief | The open question worth testing next |
 
 ## The demo company: NOVA
 
 A Bengaluru learning app (2.3M users) with two years of experiment history and three hidden stories:
 
 | Belief | What really happened | RETRACE says |
-|---|---|---|
-| "Gamification hurts onboarding" (EXP-07, Mar 2024) | It only hurt with 7-step onboarding; with 3 steps it helped (EXP-10 vs EXP-13) | **Revised** |
-| "Push notifications hurt retention" (EXP-09) | 5/day hurt; 1–2/day helped (EXP-24 arrives live in the demo) | **Challenged → Revised** |
-| "Dark mode doesn't move retention" (EXP-06) | Confirmed again by EXP-18 | **Held up** |
-| "Annual plans scare users" (EXP-15) | Only 780 users | **Weak basis** |
+|---|---|:---:|
+| "Gamification hurts onboarding" (EXP-07, Mar 2024) | It only hurt with 7-step onboarding; with 3 steps it helped (EXP-10 vs EXP-13) | 🔄 **Revised** |
+| "Push notifications hurt retention" (EXP-09) | 5/day hurt; 1–2/day helped (EXP-24 arrives live in the demo) | ⚠️ **Challenged → Revised** |
+| "Dark mode doesn't move retention" (EXP-06) | Confirmed again by EXP-18 | ✅ **Held up** |
+| "Annual plans scare users" (EXP-15) | Only 780 users | 🪶 **Weak basis** |
 
 It also ignores traps: an underpowered test, a paywall test that ran during the Diwali sale and an outage, and a "gamified referral" test that uses the same word but is about something else.
 
 ## How it works
 
-![RETRACE system architecture](docs/system-architecture.png)
+<p align="center">
+  <img src="docs/system-architecture.png" alt="RETRACE system architecture" width="900">
+</p>
 
 **Pipeline:** `RETAIN → RECALL → COMPARE → REVISE → COVERAGE → ANSWER`, shown live in the memory trace.
 
@@ -29,7 +55,8 @@ It also ignores traps: an underpowered test, a paywall test that ran during the 
 - **Coverage map:** every combination of conditions, tested or not; the next test is the one that completes the most clean comparisons, phrased as an open question, never a prediction.
 - **Amnesia Mode:** the same question without memory, for the before/after.
 
-The LLM never decides the evidence. `engine.py` computes it; Groq or OpenRouter only writes the sentences, and any answer citing an unknown experiment is rejected for a template.
+> [!IMPORTANT]
+> The LLM never decides the evidence. `engine.py` computes it; Groq or OpenRouter only writes the sentences, and any answer citing an unknown experiment is rejected for a template.
 
 ## How RETRACE uses Hindsight
 
@@ -44,19 +71,29 @@ The LLM never decides the evidence. `engine.py` computes it; Groq or OpenRouter 
 
 ## Run it
 
+**1. Backend**
+
 ```bash
-# backend
 cd backend
 cp .env.example .env          # add HINDSIGHT_API_KEY and GROQ_API_KEY
 python3 -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
-python seed.py                # once; then wait 3–5 minutes
+python seed.py                # once
 uvicorn app.main:app --reload --port 8000
+```
 
-# frontend (second terminal)
+> [!NOTE]
+> After running `seed.py`, wait 3–5 minutes before starting the server so Hindsight can process the seeded memories.
+
+**2. Frontend** (second terminal)
+
+```bash
 cd frontend && npm install && npm run dev
 ```
-Open http://localhost:5173. Tests: `cd backend && python -m pytest -q`.
+
+**3. Open** http://localhost:5173
+
+**Tests:** `cd backend && python -m pytest -q`
 
 ## Install RETRACE as a self-driving agent
 
@@ -79,5 +116,4 @@ backend/data/nova/    NOVA's history
 backend/tests/        engine tests
 frontend/src/         React UI
 docs/spec.md          product spec
-ROADMAP.md            build status and next steps
 ```
